@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Clases en Javascript | www.cosasdigitales.com</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+	<h1>Resultados en consola</h1>
+
+	<script type="text/javascript">
+
+		/* Extracto de www.cosasdigitales.com */
+
+		class Factura {
+
+		    constructor(numero, cliente, divisa, subtotal, IVA) {		// método constructor
+		        this.numero = numero;
+		        this.cliente = cliente;
+		        this.divisa = divisa;
+		        this.subtotal = subtotal;
+		        this.IVA = IVA;
+		    }
+
+		    get total() {												// método get
+		        return this.subtotal + this.IVA;
+		    }
+
+		    set nuevaDivisa(valor) {									// método set
+		        this.divisa = valor;
+		    }
+
+		    aplicarDescuento(porcentaje) {								// método prototipo
+		        this.subtotal -= this.subtotal / 100 * porcentaje;
+		    }
+
+		    static instrucciones(){										// método estático
+		        console.log("Indica para cada factura su numero, cliente, divisa, subtotal e IVA en este orden");
+		    }
+
+		    static calcularDiferencia(factura1, factura2){			    // método estático
+		        return factura1.total - factura2.total;
+		    }
+		}	
+
+
+		Factura.instrucciones();
+
+		const factura1 = new Factura(201, "Transportes SA", "eur", 542, 113);
+		const factura2 = new Factura(202, "Mudanzas SA", "eur", 100, 21);
+
+		console.log("La factura " + factura1.numero + " está en divisa " + factura1.divisa);
+		// La factura 201 está en divisa eur
+
+		console.log("La factura " + factura2.numero + " tiene un total de " + factura2.total + " " + factura2.divisa);
+		// La factura 202 tiene un total de 121 eur
+
+		factura2.nuevaDivisa = "GBP";
+		console.log("La factura " + factura2.numero + " tiene ahora un total de " + factura2.total + " " + factura2.divisa);
+		// La factura 202 tiene ahora un total de 121 GBP
+
+		factura2.aplicarDescuento(50); 
+		console.log("La factura " + factura2.numero + " tiene ahora un total de " + factura2.total + " " + factura2.divisa);
+		// La factura 202 tiene ahora un total de 71 GBP
+
+		const diferencia = Factura.calcularDiferencia(factura1, factura2); 
+		console.log("La diferencia entre las facturas es de " + diferencia);
+		// La diferencia entre las facturas es de 584
+
+	</script>
+
+</body>
+</html>
