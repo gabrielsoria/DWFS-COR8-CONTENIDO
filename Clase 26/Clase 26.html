@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	
+		<!-- CSS style to place three div side by side -->
+		<style> 
+			.div {
+                width: 20%;
+                height: 125px;
+                margin: 2px;
+                border: solid #000000 1px;
+                float: left;
+                padding: 4px;
+            }
+
+            .container {
+                width: 100%;
+                margin: auto;
+            }
+		</style> 
+	</head> 
+	
+	<body> 
+		
+		<h1>Ejercicio clase 26</h1> 
+        <p>Realizar la consigna de cada cuadro. <br>Para realizarla usar los eventos click, mouseover, mouseout, dblclick, keydown, change.
+            <br>
+            Para asociar eventos, usar elem.addEventListener("evento", callback);
+        </p>
+        <div class="container">
+            <div class="div" id="divAlert">
+                <p>Este cuadro debe informar con un alert, cuando el mouse pasa por encima de el.</p>
+            </div>
+            <div class="div" id="divGreen">
+                
+                <p>Este cuadro debe pintarse color verde (#BDF271) cuando se pasa por encima con el mouse. Y debe quedar en verde.</p>
+            </div>
+            <div class="div" id="divOrange">
+                <p>Este cuadro debe pintarse color naranja (#FA9600) cuando el mouse esta encima de el. Cuando el mouse sale de su area, debe volver a ser sin color.</p>
+            </div>
+            <div class="div" id="divBorder">
+                <p>Cuando hago click sobre este cuadro, su borde debe pasar a rojo con un grosor de 4px. Si hago doble click, debe volver a la normalidad.</p>
+            </div>
+            <div class="div">
+                <p>Si la caja de texto recibe el foco, sus bordes deben pasar a ser de color #ACF0F2 y 2px de grosor. Cuando pierde el foco, debe volver a la normalidad.</p>
+                <input type="text" value="" placeholder="Ingrese texto" id="txtFoco">
+            </div>
+            <div class="div">
+                <p>Si el contenido de la caja de texto cambia, se debe habilitar el boton de guardar.</p>
+                <input type="text" value="Texto original" placeholder="" id="txtCambio">
+                <button type="button" disabled="disabled" id="btnDisabled">Guardar</button>
+            </div>
+            <div class="div">
+                <p>Si en la caja de texto se presiona la tecla enter, se debe disparar el click del boton.</p>
+                <input type="text" value="" placeholder="Ingrese texto" id="txtEnter">
+                <button type="button" onclick="alert('boton clickeado.!!!');" id="btnClick">Guardar</button>
+            </div>
+            <div class="div" onclick="alert('el div fue clickeado')">
+                <p>Cuando se presiona el boton, debe disparar una alerta que diga "boton presionado" pero sin disparar la alerta del div.</p>
+                <button type="button" id="btnAlert">Guardar</button>
+            </div>
+        </div>
+
+        <script>
+
+
+
+            
+
+
+
+
+
+        </script>
+		
+	</body> 
+</html>								 

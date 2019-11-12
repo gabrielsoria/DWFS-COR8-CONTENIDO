@@ -1,0 +1,131 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	
+		<!-- CSS style to place three div side by side -->
+		<style> 
+			.div {
+                width: 20%;
+                height: 125px;
+                margin: 2px;
+                border: solid #000000 1px;
+                float: left;
+                padding: 4px;
+            }
+
+            .container {
+                width: 100%;
+                margin: auto;
+            }
+
+            .error {
+                background: FIREBRICK;
+                height: 30px;
+                color: WHITE;
+                padding: 10px;
+                margin-bottom: 20px;
+                border-radius: 3px;
+                display: block;
+            }
+
+
+            /* Not our focus */
+            body {
+                padding: 50px;
+                font-size: 16pt;
+            }
+
+            .divMessage {
+                float: left;
+            }
+
+            .divClose {
+                float: right;
+            }
+
+            .btn {
+                margin-bottom: 5px;
+            }
+
+            .hide {
+                display: none;
+            }
+        </style> 
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+	</head> 
+	
+	<body> 
+		
+		<h1>Ejercicio clase 27</h1> 
+        <p>
+            Aplicar las funciones jquery. Usar selectores y el evento <strong>click(callback)</strong>.
+            
+            <br>
+            Los eventos a aplicar son fadeIn(), fadeOut(), slideUp(); slideDown();
+            <br>
+            No modificar el html.
+        </p>
+        <div class="container">
+                
+            <!-- este div tiene que aparecer con la funcion fadeIn() -->
+            <div id="divFade" class="error">
+                <div class="divMessage" >Fade In.</div>
+                </div>
+            </div>
+            <button class="btn" type="button" id="btnFadeIn">Mostrar div con fadeIn</button>
+            <button class="btn" type="button" id="btnFadeOut">Ocultar div con fadeOut</button>
+            <hr>
+
+            <!-- Este div debe desaparecer con la funcion fadeOut() -->
+            
+
+            <div id="divSlide" class="error">
+                <div class="divMessage" >SlideUp and slideDown div.</div>
+                </div>
+            </div>
+            <button class="btn" type="button" id="btnSlideUp">Ocultar div con slideUp</button>
+            <button class="btn" type="button" id="btnSlideDown">Mostrar div con slideDown</button>
+            <hr>
+
+            <div id="divShow" class="error">
+                <div class="divMessage" >SlideUp and slideDown div.</div>
+                </div>
+            </div>
+            <button class="btn" type="button" id="btnShow">Mostrar div con show</button>
+            <button class="btn" type="button" id="btnHide">Ocultar div con hide</button>
+            <hr>
+            
+
+
+            <hr>
+            <div class="error">
+                <div class="divMessage">Ocultar cuando presionan la x.</div>
+                <div class="divClose" id="divClose">
+                    <strong>X</strong>
+                </div>
+            </div>
+            
+            </div>
+            
+        <script>
+            $(document).ready(function(){
+
+
+                $("#btnFadeIn").click(function(){
+                    $("#divFade").fadeIn(4000);
+                });
+
+                $("#btnFadeOut").click(function(){
+                    $("#divFade").fadeOut(4000);
+                });
+
+
+            });
+
+        </script>
+		
+	</body> 
+</html>								 

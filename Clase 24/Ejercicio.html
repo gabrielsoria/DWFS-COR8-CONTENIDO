@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Ejemplo de un mostrador de diapositivas</title> 
+		<script type="text/javascript">
+			var contador = 0;
+			var diapositivas = [];
+			function inicio() {
+				var contenedor = document.getElementById("diapositivas");
+				while (contenedor.childNodes.length > 0){
+					
+					if (contenedor.getElementsByTagName("img")[0] == contenedor.firstChild){
+						diapositivas[diapositivas.length] = contenedor.removeChild(contenedor.firstChild);
+					}
+					else 
+						contenedor.removeChild(contenedor.firstChild);
+				}
+			}
+			
+			function adelante() {
+				contador++;
+				if (contador >= diapositivas.length) contador = 0;
+				ponerImagen()
+			}
+			
+			function atras() {
+				contador--;
+				if (contador < 0 ) contador = diapositivas.length - 1;
+				ponerImagen();
+			} 
+			
+			function ponerImagen() {
+				var contenedor = document.getElementById("diapositivas");
+				if (contenedor.childNodes.length==0)
+				contenedor.appendChild(diapositivas[contador]);
+				else contenedor.replaceChild(diapositivas[contador], contenedor.childNodes[0]);
+			}
+		</script>
+	</head>
+	<body>
+		<a href="javascript: atras();">Atrás</a>
+		<span id="diapositivas">
+		<img src="4.jpg" alt="Diapositiva 1" height="100" width="200">
+		<img src="5.jpg" alt="Diapositiva 2" height="100" width="200">
+		<img src="6.jpg" alt="Diapositiva 3" height="100" width="200">
+		</span>
+		<a href="javascript: adelante();">Adelante</a>
+	</body>
+</html>
+<script type="text/javascript">
+	inicio();
+	ponerImagen();
+</script> 

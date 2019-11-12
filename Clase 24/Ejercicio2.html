@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ejercicio clase 24 - Manipulando dom</title> 
+		
+	</head>
+	<body>
+        
+        <button type="button" onclick="atras()">Atras</button>
+        
+        <span id="diapositivas">
+            <img src="4.jpg" alt="Diapositiva 1" height="100" width="200">
+            <img src="5.jpg" alt="Diapositiva 2" height="100" width="200">
+            <img src="6.jpg" alt="Diapositiva 3" height="100" width="200">
+        </span>
+
+        <button type="button" onclick="adelante()">Adelante</button>
+        
+        
+
+
+        <script type="text/javascript">
+            
+            let contador = 0;
+            let span = document.getElementById("diapositivas");
+            
+            var imagenes = span.querySelectorAll("img");
+            let images =  [];
+
+
+            for(let i = 0; i < imagenes.length; i ++) {
+
+                images.push(imagenes[i].src)
+
+                if(i == 0)
+                    continue;
+
+                span.removeChild(imagenes[i]);
+            }
+			
+			function adelante() {
+                
+                //span.removeChild(imagenes[contador]);
+                contador ++;
+
+                if(contador == imagenes.length) {
+                    contador = 0;
+                }
+
+                let img = span.getElementsByTagName("img")[0];
+
+                img.setAttribute("src", images[contador]);
+                
+                //span.appendChild(imagenes[contador]);
+			}
+			
+			function atras() {
+                
+                // span.removeChild(imagenes[contador]);
+                contador --;
+                if(contador < 0) {
+                    contador = imagenes.length - 1;
+                }
+                
+                span.getElementsByTagName("img")[0].src = images[contador];
+                
+                //span.appendChild(imagenes[contador]);
+			} 
+
+		</script>
+
+	</body>
+</html>
