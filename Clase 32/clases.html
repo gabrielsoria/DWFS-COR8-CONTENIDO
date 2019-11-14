@@ -69,6 +69,38 @@
 		console.log("La diferencia entre las facturas es de " + diferencia);
 		// La diferencia entre las facturas es de 584
 
+		class Protesis{
+			constructor(marca, precioInicial, calidad, origen, precioFinal, cirugia) {
+				this.marca = marca;
+				this.precioInicial = precioInicial;
+				this.calidad = calidad;
+				this.origen = origen;
+				this.precioFinal = precioFinal;
+				this.cirugia = cirugia;
+			}
+
+			get sumarStock() {
+				return this.precioInicial + this.precioFinal;
+			}
+
+		}
+
+		
+		const omicronSrl = new Protesis('cdh', 500, 'buena', 'nacional', 900, 'Traumatologia');
+		const promedonSrl = new Protesis('Stryker', 1680, 'exelente', 'importada', 6, 'Neurocirugia');
+
+		//const stockFinal = omicronSrl.sumarStock();
+
+		console.log(`La protesis ${omicronSrl.marca} tiene un valor de ${omicronSrl.precioInicial} dolares, con una calidadad ${omicronSrl.calidad} y de origen ${omicronSrl.origen}`);
+
+		//console.log(`la suma de ${omicronSrl.precioInicial} y el stock de ${omicronSrl.precioFinal} es ${omicronSrl.sumarStock(this.precioInicial,this.precioFinal)}`);
+		console.log(`La protesis tiene una diferencia de precios de $${omicronSrl.precioInicial - omicronSrl.precioFinal}`);
+		console.log(`La protesis tiene una diferencia de precios de $${omicronSrl.sumarStock(precioInicial, precioFinal)}`);
+
+
+
+
+
 	</script>
 
 </body>
