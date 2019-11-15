@@ -66,6 +66,8 @@ class Servicio{
 
 }
 
+var usuarioNuevo = new Usuario('yamil', 1, 1234);
+
 
 
 
