@@ -114,3 +114,5 @@ let servicios = {
     gas: new Servicio("Servicio de gas", 250)
 
 }
+
+//botones
