@@ -56,11 +56,22 @@ var Servicio=function(nombre, precio){
     this.precio=precio;
 }
 
+
+let cuenta = new Cuenta(1111, 0, 0, [2222, 4444], 0 );
+let usuario = new Usuario("Gabriel", "4444", cuenta);
+
+let servicios = { 
+    luz: new Servicio("Servicio de luz", 300),
+    agua: new Servicio("Servicio de agua", 200),
+    gas: new Servicio("Servicio de gas", 400),
+}
+
+
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML.
 window.onload = function() {
-    cargarNombreEnPantalla();
-    actualizarSaldoEnPantalla();
-    actualizarLimiteEnPantalla();
+    cargarNombreEnPantalla(usuario);
+    actualizarSaldoEnPantalla(usuario.cuenta);
+    actualizarLimiteEnPantalla(usuario.cuenta);
 }
 
 
@@ -90,14 +101,14 @@ function iniciarSesion() {
 }
 
 //Funciones que actualizan el valor de las variables en el HTML
-function cargarNombreEnPantalla() {
-    document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario;
+function cargarNombreEnPantalla(usuario) {
+    document.getElementById("nombre").innerHTML = "Bienvenido/a " + usuario.nombre;
 }
 
-function actualizarSaldoEnPantalla() {
-    document.getElementById("saldo-cuenta").innerHTML = "$" + saldoCuenta;
+function actualizarSaldoEnPantalla(cuenta) {
+    document.getElementById("saldo-cuenta").innerHTML = "$" + cuenta.saldo;
 }
 
-function actualizarLimiteEnPantalla() {
-    document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + limiteExtraccion;
+function actualizarLimiteEnPantalla(cuenta) {
+    document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + cuenta.limiteDeExtraccion;
 }
