@@ -61,9 +61,9 @@ class Usuario {
 }
 
 class Cuenta {
-    constructor(nroCuenta, saldo, limiteExtraccion, cuentasAsociadas) {
+    constructor(nroCuenta, limiteExtraccion, cuentasAsociadas) {
         this.nroCuenta = nroCuenta;
-        this.saldo = saldo;
+        this.saldo = 0;
         this.limiteExtraccion = limiteExtraccion;
         this.cuentasAsociadas = cuentasAsociadas;
     }
@@ -105,13 +105,14 @@ class Servicio {
 };
 
 //Instanciamos los objetos
-let cuenta1 = new Cuenta (1111, 0, 0, [2222, 4444]);
-let usuario1 = new Usuario ("Eugenia", 1234)
+let cuenta1 = new Cuenta (1111, 0, [2222, 4444]);
+let usuario1 = new Usuario ("Eugenia", 1234, cuenta1)
 
 let servicios = {
     luz: new Servicio("Servicio de luz", 300),
     agua: new Servicio("Servicio de agua", 500),
-    gas: new Servicio("Servicio de gas", 250)
+    gas: new Servicio("Servicio de gas", 250),
+    telefono: new Servicio("Telefono", 500)
 
 }
 
