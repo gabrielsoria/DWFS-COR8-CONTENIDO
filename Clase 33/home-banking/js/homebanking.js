@@ -15,6 +15,17 @@ function cambiarLimiteDeExtraccion() {
 
 function extraerDinero() {
 
+    let montoExtraer = parseInt(prompt("Ingrese el monto a extraer"));
+
+    if(usuario1.cuenta.validarSaldoExtraccion(montoExtraer) == false) {
+        return;
+    } else {
+        usuario1.cuenta.extraerDinero(montoExtraer);
+
+        alert(`Has extraído: $ ${montoExtraer} \n Saldo anterior: $ ${usuario1.cuenta.saldoAnterior} \n Saldo actual: $ ${usuario1.cuenta.saldo}`);
+
+        actualizarSaldoEnPantalla(usuario1.cuenta);
+    }
 }
 
 function depositarDinero() {
