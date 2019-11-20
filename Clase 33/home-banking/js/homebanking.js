@@ -1,7 +1,7 @@
 //Declaración de variables
 
 var pinUsuario = 1234;
-var saldo = 500;
+
 
 
 
