@@ -20,14 +20,18 @@ function extraerDinero() {
 function depositarDinero() {
 
     let montoDepositar = parseInt(prompt("Ingrese el monto a depositar"));
-    if (isNaN(montoDepositar) || montoDepositar == "" || montoDepositar == null ||montoDepositar <= 0) {
+
+    if (usuario1.cuenta.validarDeposito(montoDepositar) == false) {
         return;
-    }
+    } else {
+    
         usuario1.cuenta.depositaDinero(montoDepositar);
         
         alert(`Has depositado: $ ${montoDepositar} \n Saldo anterior: $ ${usuario1.cuenta.saldoAnterior} \n Saldo actual: $ ${usuario1.cuenta.saldo}`)
     
         actualizarSaldoEnPantalla(usuario1.cuenta);
+
+    }
 }
 
 function pagarServicio() {
@@ -85,6 +89,10 @@ class Cuenta {
     validarSaldoExtraccion = function (monto) {
         return (monto > 0 && this.saldo >= monto);
     };
+    validarDeposito = function (monto) {
+        return (monto !== NaN && monto > 0 && monto !== "" && monto !== null);
+    }
+
     validarLimites = function (monto) {
         return (monto <= limiteExtraccion);
     };
