@@ -2,9 +2,9 @@
 
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML.
 window.onload = function() {
-    cargarNombreEnPantalla();
-    actualizarSaldoEnPantalla();
-    actualizarLimiteEnPantalla();
+    cargarNombreEnPantalla(usuario1);
+    actualizarSaldoEnPantalla(cuenta1);
+    actualizarLimiteEnPantalla(cuenta1);
 }
 
 
@@ -19,6 +19,15 @@ function extraerDinero() {
 
 function depositarDinero() {
 
+    let montoDepositar = parseInt(prompt("Ingrese el monto a depositar"));
+    if (isNaN(montoDepositar) || montoDepositar == "" || montoDepositar == null ||montoDepositar <= 0) {
+        return;
+    }
+        usuario1.cuenta.depositaDinero(montoDepositar);
+        
+        alert(`Has depositado: $ ${montoDepositar} \n Saldo anterior: $ ${usuario1.cuenta.saldoAnterior} \n Saldo actual: $ ${usuario1.cuenta.saldo}`)
+    
+        actualizarSaldoEnPantalla(usuario1.cuenta);
 }
 
 function pagarServicio() {
@@ -34,16 +43,16 @@ function iniciarSesion() {
 }
 
 //Funciones que actualizan el valor de las variables en el HTML
-function cargarNombreEnPantalla() {
-    document.getElementById("nombre").innerHTML = "Bienvenido/a " + usuario1.nombre;
+function cargarNombreEnPantalla(usuario) {
+    document.getElementById("nombre").innerHTML = "Bienvenido/a " + usuario.nombre;
 }
 
-function actualizarSaldoEnPantalla() {
-    document.getElementById("saldo-cuenta").innerHTML = "$" + cuenta1.saldo;
+function actualizarSaldoEnPantalla(cuenta) {
+    document.getElementById("saldo-cuenta").innerHTML = "$" + cuenta.saldo;
 }
 
-function actualizarLimiteEnPantalla() {
-    document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + cuenta1.limiteExtraccion;
+function actualizarLimiteEnPantalla(cuenta) {
+    document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + cuenta.limiteExtraccion;
 }
 
 //CLASES 
@@ -65,6 +74,7 @@ class Cuenta {
         this.nroCuenta = nroCuenta;
         this.saldo = 0;
         this.limiteExtraccion = limiteExtraccion;
+        this.saldoAnterior = 0;
         this.cuentasAsociadas = cuentasAsociadas;
     }
 
@@ -78,7 +88,8 @@ class Cuenta {
     validarLimites = function (monto) {
         return (monto <= limiteExtraccion);
     };
-    depositarDinero = function (monto) {
+    depositaDinero = function (monto) {
+        this.saldoAnterior = this.saldo;
         this.saldo += monto;
     };
     validarCuentaAsociada = function (nroCuenta) {
@@ -86,9 +97,11 @@ class Cuenta {
     };
 
     transferirDinero = function (monto, cuenta) {
+        this.saldoAnterior = this.saldo;
         this.saldo -= monto;
     };
     pagarServicio = function (Servicio) {
+        this.saldoAnterior = this.saldo;
         this.saldo -= Servicio.precio;
     };
     actualizarLimiteEnPantalla = function (monto) {
