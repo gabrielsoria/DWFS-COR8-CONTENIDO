@@ -10,11 +10,8 @@ class Usuario{
         this.usuario = usuario;
         this.cuenta = cuenta;
         this.pin = pin;
-    }
-
-    get validarPin(pin) {
-        if(this.pin == pin){
-            return this.pin == pin;
+        this.validarPin = function(){
+            return this.pin = pin
         }
     }
 }
@@ -27,30 +24,30 @@ class Cuenta{
         this.cuentasAsociadas = cuentasAsociadas;
         this.saldoAnterior = saldoAnterior;
     }
-    get extraerPlata(monto){
+    get extraerPlata(){
         return saldo - monto;
     }
-    get validarSaldo(monto){
+    get validarSaldo(){
         if(this.saldo<monto) {
             return 
         }
     }
-    get validarLimite(monto){
+    get validarLimite(){
         if(monto>this.limiteExtraccion){
             return false;
         }
     }
-    get depositarPlata(monto){
+    get depositarPlata(){
         return this.saldo + monto;
     }
 
-    get transferirplata(monto){
+    get transferirplata(){
         return this.saldo - monto;
     }
-    get pagarFactura(Servicio){
+    get pagarFactura(){
         return this.saldo<=this.precio;
     }
-    get actualizarLimiteSaldo(monto){
+    get actualizarLimiteSaldo(){
         return monto == this.limiteExtraccion;
     }
 
@@ -66,7 +63,7 @@ class Servicio{
 
 }
 
-var usuarioNuevo = new Usuario('yamil', 1, 1234);
+var nombreUsuario = new Usuario('yamil', 1, 1234);
 
 
 
@@ -76,7 +73,7 @@ var usuarioNuevo = new Usuario('yamil', 1, 1234);
 
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML.
 window.onload = function() {
-    cargarNombreEnPantalla();
+    cargarNombreEnPantalla(nombreUsuario.usuario);
     actualizarSaldoEnPantalla();
     actualizarLimiteEnPantalla();
 }
@@ -109,7 +106,7 @@ function iniciarSesion() {
 
 //Funciones que actualizan el valor de las variables en el HTML
 function cargarNombreEnPantalla() {
-    document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario;
+    document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario.usuario;
 }
 
 function actualizarSaldoEnPantalla() {
