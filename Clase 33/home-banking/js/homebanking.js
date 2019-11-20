@@ -11,6 +11,14 @@ window.onload = function() {
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
 
+    let nuevoLimite = parseInt(prompt("Ingrese el nuevo límite de extracción"));
+
+    if(usuario1.cuenta.validarLimites(nuevoLimite) == false){
+        return;
+    } else {
+        usuario1.cuenta.actualizarLimite(nuevoLimite);
+        actualizarLimiteEnPantalla(usuario1.cuenta);
+    }
 }
 
 function extraerDinero() {
@@ -98,14 +106,14 @@ class Cuenta {
         this.saldo -= monto;
     };
     validarSaldoExtraccion = function (monto) {
-        return (monto > 0 && this.saldo >= monto);
+        return (monto > 0 && this.saldo >= monto && monto <= this.limiteExtraccion);
     };
     validarDeposito = function (monto) {
         return (monto !== NaN && monto > 0 && monto !== "" && monto !== null);
-    }
+    };
 
     validarLimites = function (monto) {
-        return (monto <= limiteExtraccion);
+        return (monto !== this.limiteExtraccion && monto !== null && monto !== NaN && monto !== 0);
     };
     depositaDinero = function (monto) {
         this.saldoAnterior = this.saldo;
@@ -123,7 +131,7 @@ class Cuenta {
         this.saldoAnterior = this.saldo;
         this.saldo -= Servicio.precio;
     };
-    actualizarLimiteEnPantalla = function (monto) {
+    actualizarLimite = function (monto) {
         this.limiteExtraccion = monto; 
     };
 
@@ -147,5 +155,3 @@ let servicios = {
     telefono: new Servicio("Telefono", 500)
 
 }
-
-//botones
