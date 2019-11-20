@@ -29,9 +29,7 @@ function extraerDinero() {
         return;
     } else {
         usuario1.cuenta.extraerDinero(montoExtraer);
-
         alert(`Has extraído: $ ${montoExtraer} \n Saldo anterior: $ ${usuario1.cuenta.saldoAnterior} \n Saldo actual: $ ${usuario1.cuenta.saldo}`);
-
         actualizarSaldoEnPantalla(usuario1.cuenta);
     }
 }
@@ -43,17 +41,14 @@ function depositarDinero() {
     if (usuario1.cuenta.validarDeposito(montoDepositar) == false) {
         return;
     } else {
-    
         usuario1.cuenta.depositaDinero(montoDepositar);
-        
         alert(`Has depositado: $ ${montoDepositar} \n Saldo anterior: $ ${usuario1.cuenta.saldoAnterior} \n Saldo actual: $ ${usuario1.cuenta.saldo}`)
-    
         actualizarSaldoEnPantalla(usuario1.cuenta);
-
     }
 }
 
 function pagarServicio() {
+
 
 }
 
