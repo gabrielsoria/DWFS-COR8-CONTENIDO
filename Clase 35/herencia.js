@@ -80,5 +80,22 @@ var alumno = new Alumno("nombreAlumno", "apellidoAlumno", 12312312, 1111);
 //var alumno = new Alumno("nombreAlumno", "apellidoAlumno", 12312312, 1111);
 
 
+class Nuevo {
 
+    constructor(nombres, apellido){
+        this.nombres = nombres;
+        this.apellido = apellido;
+    }
+
+    logNombres() {
+        this.nombres.forEach( function(element) {
+            console.log(this);
+            console.log(element + this.apellido);
+            
+        });
+    }
+    
+}
+
+var nuevo = new Nuevo(["algo","otro"],"soria");
 
