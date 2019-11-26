@@ -65,7 +65,7 @@ class Servicio{
 
 var nombreUsuario = new Usuario('yamil', 1, 1234);
 
-
+var nombreUsuario2 = new Usuario('jorge', 2, 5678);
 
 
 
