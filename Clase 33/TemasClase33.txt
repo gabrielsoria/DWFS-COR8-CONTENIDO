@@ -5,3 +5,34 @@ Dudas y consultas practicos.
 Checklist de proyecto.
 Ejercicio de objetos 
 Scope Closures. 
+
+
+usuario:
+nombre
+pin
+cuenta
+
+validarPin()
+
+---------------------
+cuenta:
+nr cuenta
+saldo
+limite extrcccion
+cuentas asociadas
+saldoAnterior
+
+extraerDiner()
+validarSaldo()
+validarLimite()
+depositarDinero()
+transferenciaDienro()
+
+------------------------
+servicio:
+
+nombre
+precio
+
+pagarServicio(servicio)
+actualizarLimite()
