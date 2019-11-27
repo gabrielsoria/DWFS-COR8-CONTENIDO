@@ -1,7 +1,13 @@
 //Declaración de variables
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 let pinUsuario = 1234;
+=======
+var pinUsuario = 1234;
+
+
+>>>>>>> a6dafbe44fca0deb36e83f44dc8d2403da0cda9f
 
 
 class Usuario{
@@ -9,6 +15,7 @@ class Usuario{
         this.usuario = usuario;
         this.cuenta = cuenta;
         this.pin = pin;
+<<<<<<< HEAD
     }
 
     get validarPin() {
@@ -17,6 +24,64 @@ class Usuario{
 }
 
 
+=======
+        this.validarPin = function(){
+            return this.pin = pin
+        }
+    }
+}
+
+class Cuenta{
+    constructor(nroCuenta, saldo, limiteExtraccion, cuentasAsociadas, saldoAnterior){
+        this.nroCuenta = nroCuenta;
+        this.saldo = saldo;
+        this.limiteExtraccion = limiteExtraccion;
+        this.cuentasAsociadas = cuentasAsociadas;
+        this.saldoAnterior = saldoAnterior;
+    }
+    get extraerPlata(){
+        return saldo - monto;
+    }
+    get validarSaldo(){
+        if(this.saldo<monto) {
+            return 
+        }
+    }
+    get validarLimite(){
+        if(monto>this.limiteExtraccion){
+            return false;
+        }
+    }
+    get depositarPlata(){
+        return this.saldo + monto;
+    }
+
+    get transferirplata(){
+        return this.saldo - monto;
+    }
+    get pagarFactura(){
+        return this.saldo<=this.precio;
+    }
+    get actualizarLimiteSaldo(){
+        return monto == this.limiteExtraccion;
+    }
+
+
+    /*array.includes(element)*/
+}
+
+class Servicio{
+    constructor(nombre, precio){
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+}
+
+var nombreUsuario = new Usuario('yamil', 1, 1234);
+
+var nombreUsuario2 = new Usuario('jorge', 2, 5678);
+>>>>>>> a6dafbe44fca0deb36e83f44dc8d2403da0cda9f
 
 
 
@@ -24,6 +89,7 @@ class Usuario{
 
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML.
 window.onload = function() {
+<<<<<<< HEAD
     cargarNombreEnPantalla();
     actualizarSaldoEnPantalla();
     actualizarLimiteEnPantalla();
@@ -387,12 +453,57 @@ function actualizarSaldoEnPantalla(cuenta) {
 }
 
 <<<<<<< HEAD
+=======
+    cargarNombreEnPantalla(nombreUsuario.usuario);
+    actualizarSaldoEnPantalla();
+    actualizarLimiteEnPantalla();
+}
+
+
+//Funciones que tenes que completar
+function cambiarLimiteDeExtraccion() {
+
+}
+
+function extraerDinero() {
+
+}
+
+function depositarDinero() {
+
+}
+
+function pagarServicio() {
+
+}
+
+function transferirDinero() {
+
+}
+
+function iniciarSesion() {
+
+}
+
+//Funciones que actualizan el valor de las variables en el HTML
+function cargarNombreEnPantalla() {
+    document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario.usuario;
+}
+
+function actualizarSaldoEnPantalla() {
+    document.getElementById("saldo-cuenta").innerHTML = "$" + saldoCuenta;
+}
+
+>>>>>>> a6dafbe44fca0deb36e83f44dc8d2403da0cda9f
 function actualizarLimiteEnPantalla() {
     document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + limiteExtraccion;
 }
 
+<<<<<<< HEAD
 =======
 function actualizarLimiteEnPantalla(cuenta) {
     document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + cuenta.limiteDeExtraccion;
 }
 >>>>>>> bdf9befb65b9fb3a2f885c2dda46685d22dc386e
+=======
+>>>>>>> a6dafbe44fca0deb36e83f44dc8d2403da0cda9f
