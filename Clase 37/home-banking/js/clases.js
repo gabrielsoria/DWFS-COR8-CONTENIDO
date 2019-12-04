@@ -18,10 +18,11 @@ class UsuarioClass {
 	/**
 	 * metodo de validacion de pin.
 	 */
-    validarPin() {
+    validarPin(pin) {
         return this.pin == pin;
     }
 }
+
 
 /**
  * clase para cuenta.
@@ -53,17 +54,18 @@ class Cuenta {
 	}
 	
 	/**
-	 * funcion para validar el dinero a extraer
-	 * @param {number} monto 
-	 */
+     * valida el dinero de extraccion.
+     * @param {string} monto 
+     */
     validarDineroExtraccion(monto){
         return monto>0 && this.saldo>=monto;
 
     }
 
 	/**
-	 * valida los limites de extraccion.
-	 */
+     * valida el limite
+     * @param {number} monto 
+     */
     validarLimiteExtraccion(monto){
         return this.limiteDeExtraccion>=monto;
 	}
