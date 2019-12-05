@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 
 <head>
@@ -15,10 +16,26 @@
 
 <body>
     <div id="mocha"></div>
+=======
+<html>
+  <head>
+    <title>Mocha Tests</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.1/mocha.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.1/mocha.js"></script>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.js"></script> -->
+    <script src="js/clases.js"></script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+
+>>>>>>> ead5f9c48b2168246891db3871bfc041bf16736b
     <script>
         mocha.setup('bdd')
     </script>
 
+<<<<<<< HEAD
     <script src="test/homebanking.js"></script>
    
     <script>
@@ -27,4 +44,15 @@
    
 </body>
 
+=======
+    <!-- load code you want to test here -->
+
+    <!-- load your test files here -->
+    <script src="js/test/homebankingTest.js"></script>
+
+    <script>
+        mocha.run();
+    </script>
+  </body>
+>>>>>>> ead5f9c48b2168246891db3871bfc041bf16736b
 </html>

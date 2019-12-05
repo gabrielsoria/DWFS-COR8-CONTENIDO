@@ -1,5 +1,40 @@
 
 
+// chequea las propiedades
+function chequearPropiedadesUsuario() {
+
+  let user = new UsuarioClass("", undefined, "");
+
+  let properties = Object.keys(user);
+
+  return properties.length == 3;
+}
+
+// chequea las propiedades
+function chequearValoresPropiedadesUsuario() {
+
+  let user = new UsuarioClass("Gabriel", undefined, "1");
+
+  return user.nombre === "Gabriel" && user.cuenta === undefined && user.pin === 1;
+}
+
+// chequea las propiedades
+function chequearValoresPinUsuario() {
+
+  let user = new UsuarioClass("Gabriel", undefined, "1");
+
+  return !user.validarPin("2") && user.validarPin("1") && !user.validarPin("");
+}
+
+
+
+console.log("Test de cantidad de propiedades del objeto: Resultado ", chequearPropiedadesUsuario());
+console.log("Test de valores de propiedades del objeto: Resultado ", chequearValoresPropiedadesUsuario());
+console.log("Test de valores de propiedades del objeto: Resultado ", chequearValoresPinUsuario());
+
+
+
+
 
 // creacion de instancias.
 let cajaAhorro = new Cuenta(00001, 1000, [44444]);
