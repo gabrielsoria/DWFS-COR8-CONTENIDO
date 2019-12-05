@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test Runner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.1/mocha.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/6.2.1/mocha.js"
+        integrity="sha256-RM3y7QLM0CIEaDwUE+OjYowbbmgnF14bZYazKcPZeZ4=" crossorigin="anonymous"></script>
+    <script src="js/clases.js"></script>
+
+</head>
+
+<body>
+    <div id="mocha"></div>
+    <script>
+        mocha.setup('bdd')
+    </script>
+
+    <script src="test/homebanking.js"></script>
+   
+    <script>
+        mocha.run();
+    </script>
+   
+</body>
+
+</html>
