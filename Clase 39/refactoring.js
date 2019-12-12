@@ -37,20 +37,22 @@ array.push(object3);
  * si no undefined.
  * @param {number} id 
  */
-function buscarItemsEnArrayPorId (id) {
+function buscarItemsEnArrayPorId (paramArray, id) {
     
-    var i;
-    var encontrado = false;
-    for(i = 0; i < array.length; i++) {
-       if(array[i].id == id) {
-           break;
-       }
-    }
+    // var i;
+    // var encontrado = false;
+    // for(i = 0; i < paramArray.length; i++) {
+    //    if(array[i].id == id) {
+    //        break;
+    //    }
+    // }
 
-    if(encontrado)
-        return array[i];
-    else
-        return undefined;
+    // if(encontrado)
+    //     return array[i];
+    // else
+    //     return undefined;
+
+    return paramArray.find(x => x.id == id);
 }
 
 /**
@@ -60,13 +62,21 @@ function buscarItemsEnArrayPorId (id) {
  * @param {string} propiedad1 
  * @param {string} propiedad2 
  */
-function actualizarItemEnArray(id, propiedad1, propiedad2) {
+function actualizarItemEnArray(paramArray, id, propiedad1, propiedad2) {
     
-    for(var i = 0; i < array.length; i++) {
-       if(array[i].id == id) {
-            array[i].propiedad1 = propiedad1;
-            array[i].propiedad2 = propiedad2;
-       }
+    // for(var i = 0; i < array.length; i++) {
+    //    if(array[i].id == id) {
+    //         array[i].propiedad1 = propiedad1;
+    //         array[i].propiedad2 = propiedad2;
+    //    }
+    // }
+
+
+    let item = buscarItemsEnArrayPorId(paramArray, id);
+
+    if(item) {
+        item.propiedad1 = propiedad1;
+        item.propiedad2 = propiedad2;
     }
 }
 
@@ -74,12 +84,17 @@ function actualizarItemEnArray(id, propiedad1, propiedad2) {
 /**
  * borra los valores de las propiedades en todo el array.
  */
-function borrarValoresItemsEnArray() {
+function borrarValoresItemsEnArray(paramArray) {
 
-    for(var i = 0; i < array.length; i++) {
-        array[i].propiedad1 = "";
-        array[i].propiedad2 = "";
-    }
+    // for(var i = 0; i < array.length; i++) {
+    //     array[i].propiedad1 = "";
+    //     array[i].propiedad2 = "";
+    // }
+
+    paramArray.forEach(x => {
+        x.propiedad1 = "";
+        x.propiedad2 = "";
+    });
 }
 
 

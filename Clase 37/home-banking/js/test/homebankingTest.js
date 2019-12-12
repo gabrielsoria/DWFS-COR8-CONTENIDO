@@ -76,37 +76,10 @@ describe('Test del objeto usuario', function() {
         
         let user = new UsuarioClass("Gabriel", undefined, "1");
   
-        return !user.validarPin("2") 
-        && user.validarPin("1") 
-        && !user.validarPin("");
+        expect(user.validarPin(1)).to.equal(true);
+        expect(user.validarPin(0)).to.equal(false);
 
     });
 
 
 });
-
-
-// describe('Testing del objeto usuario', function() {
-//         it('test de propiedades', function() {
-//             // // Test implementation goes here
-//             // let user = new UsuarioClass("", undefined, "");
-
-//             // return user.nombre === "" && user.cuenta === undefined && user.pin === "";
-
-//             testPropiedadesUsuario();
-//         });
-
-//         it('Test de cantidad de propiedades', function() {
-//             // // Test implementation goes here
-//             // let user = new UsuarioClass("", undefined, "");
-
-//             // let keys = Object.keys(user);
-
-//             // return keys.length === 3;
-
-//             testPropiedadesCorrectas();
-//     });
-
-// // We can have more its here
-// return true
-//});
