@@ -83,3 +83,30 @@ describe('Test del objeto usuario', function() {
 
 
 });
+
+
+
+// DEFINIR UNIT TEST PARA LA CLASE CUENTA.!!!!!!!!
+
+describe("test de la clase cuenta", function() {
+
+    // definir aqui unit test.
+    it('Prueba las propiedades de cuenta', function() {
+        
+        let cuenta = new Cuenta(123, 100, []);
+  
+        let properties = Object.keys(cuenta);
+      
+        //return properties.length == 3;
+        expect(properties).to.have.lengthOf(5);
+    });
+
+});
+
+
+
+
+
+
+
+
