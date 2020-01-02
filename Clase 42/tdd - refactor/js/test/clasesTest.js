@@ -6,7 +6,7 @@ describe('Test del objeto Comision', function() {
     /**
      * hacer un test para probar la propiedad de agregar alumno
      */
-
+    
 
 
     /**
@@ -18,7 +18,7 @@ describe('Test del objeto Comision', function() {
     /**
      * hacer un test para la funcion de buscar alumno por dni.
      */
-    
+
  
 
     /**
