@@ -1,0 +1,23 @@
+.box-sx {
+    background: #323232 0% 0% no-repeat padding-box!important;
+    box-shadow: 0px 3px 6px #00000029!important;
+    border: 1px solid #7B1930!important;
+    height: 150px;
+    color: white!important;
+}
+
+.box-side {
+    background: #323232 0% 0% no-repeat padding-box!important;
+    box-shadow: 0px 3px 6px #00000029!important;
+    border: 1px solid #7B1930!important;
+    height: 500px;
+    color: white!important;
+}
+
+.card {
+    background: #323232 0% 0% no-repeat padding-box!important;
+    box-shadow: 0px 3px 6px #00000029!important;
+    border: 1px solid #7B1930!important;
+    height: 180px;
+    color: white!important;
+}
