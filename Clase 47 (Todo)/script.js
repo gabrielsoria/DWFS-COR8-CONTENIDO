@@ -5,7 +5,7 @@
 
 class Model {
     constructor() {
-        this.tareas = [];
+        this.tareas = StorageInfo.obtenerInfo("tareas") || [];
         this.observadores = [];
         this.ids = 0;
     }
@@ -13,8 +13,10 @@ class Model {
     add(tarea) {
         tarea.id = this.ids++;
         this.tareas.push(tarea);
-        //this.fnAviso(this.tareas);
+
         this.avisar();
+
+        StorageInfo.guardarInfo("tareas", this.tareas);
     }
 
     delete(idTarea) {
@@ -22,6 +24,8 @@ class Model {
         let index = this.tareas.findIndex(x => x.id == idTarea);
         this.tareas.splice(index, 1);
         this.avisar();
+
+        StorageInfo.guardarInfo("tareas", this.tareas);
     }
 
     // avisar(callback) {
@@ -33,6 +37,8 @@ class Model {
 
     agregarObservador(observer) {
         this.observadores.push(observer);
+        this.avisar();
+        
     }
 }
 
@@ -145,10 +151,33 @@ class ListController {
 
     modeloActualizado = (tareas) => {
         this.vista.mostrarContadorTareas(tareas);
+        
+    }
+}
+
+ class StorageInfo {
+
+    constructor() {
+
+    }
+
+    static guardarInfo(key, value) {
+
+        let stringData = JSON.stringify(value);
+        localStorage.setItem(key, stringData);
+    }
+
+    static obtenerInfo(key) {
+        
+        let data = localStorage.getItem(key);
+        let objectData = JSON.parse(data);
+        return objectData;
     }
 }
 
 
 let model = new Model();
+
+console.log("modelo creado", model);
 var app = new Controller(model, new View());
 var app2 = new ListController(model, new ListView());
