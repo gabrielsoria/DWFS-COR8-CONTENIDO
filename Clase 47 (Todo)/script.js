@@ -113,6 +113,7 @@ class Controller {
         };
 
         this.modelo.add(tarea);
+
     }
 
     modeloActualizado = (tareas) => {
