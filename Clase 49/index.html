@@ -10,14 +10,15 @@
   
   <script>
 
-    const Http = new XMLHttpRequest();
-    const url = 'http://localhost:8080/clientes';
-    Http.open("GET", url);
-    Http.send();
+    // Función para conectar
+    function conexion(metodo, url, callback) {
+      const Http = new XMLHttpRequest();
+      Http.open(metodo, url);
+      Http.onreadystatechange = callback
+      return Http
+    }
 
-    var objeto;
-
-    Http.onreadystatechange = function() {
+    var respuestaCliente = function() {
         if(this.readyState==4 && this.status==200) {
             objeto = JSON.parse(Http.responseText);
 
@@ -30,15 +31,21 @@
             let button = createNode('button');
             button.innerHTML = "Borrar"
             button.id = element.id
-            button
             span.innerHTML = `${element.nombre} ${element.apellido} ${element.dni} `;
-
             append(li, span);
             append(li, button);
             append(ul, li);
            });
         } 
     }    
+
+    var respuestaBorrar = function() {
+       
+    }
+    
+    var Http =  conexion("GET", "http://localhost:8080/clientes", respuestaCliente)
+    var Http2 = conexion("DELETE", "http://localhost:8080/cliente/", respuestaBorrar);
+    Http.send();
 
     function createNode(element) {
         return document.createElement(element)
@@ -47,8 +54,6 @@
     function append(parent, el) {
         return parent.appendChild(el)
     }
-
-
 </script>
 
   <h1>Usuarios</h1>
