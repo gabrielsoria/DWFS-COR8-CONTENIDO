@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>API Example</title>
+</head>
+<body>
+  
+  <script>
+
+    const Http = new XMLHttpRequest();
+    const url = 'http://localhost:8080/clientes';
+    Http.open("GET", url);
+    Http.send();
+
+    var objeto;
+
+    Http.onreadystatechange = function() {
+        if(this.readyState==4 && this.status==200) {
+            objeto = JSON.parse(Http.responseText);
+
+            const ul = document.getElementById('users')
+
+            objeto.forEach(element => {
+
+            let li = createNode('li');
+            let span = createNode('span');
+            let button = createNode('button');
+            button.innerHTML = "Borrar"
+            button.id = element.id
+            button
+            span.innerHTML = `${element.nombre} ${element.apellido} ${element.dni} `;
+
+            append(li, span);
+            append(li, button);
+            append(ul, li);
+           });
+        } 
+    }    
+
+    function createNode(element) {
+        return document.createElement(element)
+    }
+
+    function append(parent, el) {
+        return parent.appendChild(el)
+    }
+
+
+</script>
+
+  <h1>Usuarios</h1>
+  <ul id="users"></ul>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Api Example</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <script>
+
+    const Http = new XMLHttpRequest();
+    const url = 'http://localhost:8080/clientes';
+    Http.open("GET", url);
+    Http.send();
+
+    var objeto = [];
+
+    Http.onreadystatechange = function() {
+        if(this.readyState==4 && this.status==200) {
+            objeto = JSON.parse(Http.responseText);
+        }
+    }
+    
+</script>
+</body>
+</html> -->

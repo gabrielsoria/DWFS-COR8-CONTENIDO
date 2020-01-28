@@ -37,6 +37,7 @@ class ClienteModel {
         c.nombre = cliente.nombre;
         c.apellido = cliente.apellido;
         c.id = cliente.id;
+        c.dni = cliente.dni;
 
         return c;
     };
