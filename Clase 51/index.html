@@ -13,6 +13,18 @@
     <link rel="stylesheet" href="http://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
     <style>
+
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
 #contatti{
   background-color: #70c3be;
   letter-spacing: 2px;
@@ -76,9 +88,12 @@
 <div class="container mt-5" >
 
     <div class="row" style="height:550px;">
-      <div id="map" class="col-md-6 maps" >
+      <div id="map" class="col-md-6 maps">
          
       </div>
+
+      
+
       <div class="col-md-6">
         <h2 class="text-uppercase mt-3 font-weight-bold text-white">Formulario</h2>
         <form action="">
@@ -126,6 +141,47 @@
 </div>
 </div>
 
+<script>
+  var map;
+  var geocoder;
+  function initMap() {
+    var uluru = {lat: -31.4200362, lng: -64.1807137}
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -31.4200362, lng: -64.1807137},
+      zoom: 15
+    });
+    var marker = new google.maps.Marker({position: uluru, map: map});
+  }
+
+document.getElementById('btnLocalizar').addEventListener('click', function() {
+    let dire = document.getElementById('txtDireccion').value
+
+
+  geocoder = new google.maps.Geocoder();
+
+  var input = {
+      address: dire
+  };
+
+  geocoder.geocode(input, function(results, status) {
+    console.log("resultado", results)
+    console.log("resultado", status)
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+
+  });
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_up3vSXcuJBb6wDHPI0ffGLnfZeExW2M&callback=initMap"
+async defer></script>      
 
     
 </body>
