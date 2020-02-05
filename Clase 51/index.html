@@ -268,7 +268,52 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEr-WLJzdwj-vsTNO4t2IaNVEKHNZsPA&callback=initMap"
         async defer></script>
 
+<script>
+  var map;
+  var geocoder;
+  function initMap() {
+    var uluru = {lat: -31.4200362, lng: -64.1807137}
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -31.4200362, lng: -64.1807137},
+      zoom: 15
+    });
+    var marker = new google.maps.Marker({position: uluru, map: map});
+  }
+
+document.getElementById('btnLocalizar').addEventListener('click', function() {
+    let dire = document.getElementById('txtDireccion').value
+
+
+  geocoder = new google.maps.Geocoder();
+
+  var input = {
+      address: dire
+  };
+
+  geocoder.geocode(input, function(results, status) {
+    console.log("resultado", results)
+    console.log("resultado", status)
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+
+  });
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap"
+async defer></script>      
 
 </body>
+<<<<<<< HEAD
 
 </html>
+=======
+</html>
+>>>>>>> 16037588a8f087e442e95323070a6907a4f063b5
