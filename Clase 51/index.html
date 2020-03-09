@@ -117,8 +117,18 @@
                                         placeholder="Longitud">
                                 </div>
                             </div>
+                            
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="control-label">Destino</label>
+                                    <input id="txtDestino" type="text" class="form-control mt-2"
+                                        placeholder="Destino">
+                                </div>
+                            </div>
                             <div class="col-12 text-right">
+                                <button id="btnRuta" class="btn btn-primary" type="button">Obtener Ruta</button>
                                 <button id="btnLocalizar" class="btn btn-primary" type="button">Localizar</button>
+                                
                             </div>
                         </div>
                     </form>
@@ -264,56 +274,69 @@
             
         });
 
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEr-WLJzdwj-vsTNO4t2IaNVEKHNZsPA&callback=initMap"
-        async defer></script>
-
-<script>
-  var map;
-  var geocoder;
-  function initMap() {
-    var uluru = {lat: -31.4200362, lng: -64.1807137}
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -31.4200362, lng: -64.1807137},
-      zoom: 15
-    });
-    var marker = new google.maps.Marker({position: uluru, map: map});
-  }
-
-document.getElementById('btnLocalizar').addEventListener('click', function() {
-    let dire = document.getElementById('txtDireccion').value
 
 
-  geocoder = new google.maps.Geocoder();
 
-  var input = {
-      address: dire
-  };
+        // evento asociado al boton localizar
+        document.getElementById('btnRuta').addEventListener('click', function () {
 
-  geocoder.geocode(input, function(results, status) {
-    console.log("resultado", results)
-    console.log("resultado", status)
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
+            // contenido del form
+            let dire = document.getElementById("txtDireccion").value;
+            let ruta = document.getElementById("txtDestino").value;
+            
+
+            // objeto literal
+            let latlng = undefined;
+
+            // si se carga la latitud y longitud, ignoramos la direccion y construimos el objeto literal
+            if(lat && long) {
+                
+                dire = '';
+                
+                latlng = { 
+                    lat: parseFloat(lat), 
+                    lng:  parseFloat(long)
+                }
+            }
+            
+
+            // objeto. va a tener la direccion o un objeto con coordenadas.
+            var input = {
+                address: dire,
+                location: latlng
+            };
+
+            // mandamos al geocode a que nos devuelva las direcciones.            
+            geocoder.geocode(input, function (results, status) {
+                
+                if (status == 'OK') {
+
+                    // si el objeto de coordenadas fue creado, sacamos la direccion.
+                    if(latlng) {
+                        document.getElementById("txtDireccion").value = results[0].formatted_address;
+                    }
+
+                    // recentramos el mapa
+                    map.setCenter(results[0].geometry.location);
+
+                    // creamos un marcador y lo agregamos.
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+
+                    // error obteniendo direcciones.
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+
+            
         });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
 
-  });
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap"
-async defer></script>      
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEr-WLJzdwj-vsTNO4t2IaNVEKHNZsPA&callback=initMap" async defer></script>
 
 </body>
-<<<<<<< HEAD
 
 </html>
-=======
-</html>
->>>>>>> 16037588a8f087e442e95323070a6907a4f063b5
