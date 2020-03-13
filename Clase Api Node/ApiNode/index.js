@@ -1,32 +1,19 @@
-console.log("hola hola desde node!!");
-
 var express = require("express");
 var parser = require("body-parser");
-var mysql = require('mysql');
+var cors = require("cors");
+
+
+var clienteController = require("./controllers/clienteController");
+var conne = require("./dbConnection");
 
 var app = express();
-
 app.use(parser.json());
+app.use(cors());
 
 
-var conne;
 
 
-app.get("/clientes", function(request, response) {
-    
-    let query = 'select * from cliente';
-
-    conne.query(query, function (error, results, fields) {
-        
-        if (error) {            
-            console.log("error!!", error);
-            throw error;
-         } 
-        
-        response.send(JSON.stringify(results));
-    });
-        
-});
+app.get("/clientes", clienteController.getAllClientes);
 
 app.get("/cliente/:id", function(request, response) {
     
@@ -90,14 +77,5 @@ app.delete("/sumar", function(request, response) {
 
 app.listen(8089, function(){
     console.log("app iniciada en 8089!!");
-
-    conne = mysql.createConnection({
-        host     : "localhost",
-        port: "3306",
-        user     : "root",
-        password : "mysql",
-        database : "pedidotest"
-    });
-    
     conne.connect();
 })
