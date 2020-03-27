@@ -9,12 +9,59 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
         </script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <button class="btn btn-primary" onclick="agregarFila()">Agregar fila</button>
+                </div>
+                <div class="col-8">
+                    <table class="table" id="tblTable">
+                        <tr>
+                            <th>asdfasdf</th>
+                            <th>asdfasdf</th>
+                            <th>aaaa</th>
+                        </tr>
+                        <tr>
+                            <td>aaa</td>
+                            <td>aaaa</td>
+                            <td>ddddd</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
         <script>
 
             var urlService = "http://localhost:8089/clientes";
-            
+
+            function agregarFila() {
+                console.log("agregar fila");
+
+                let table = document.getElementById("tblTable");
+                let tr = document.createElement("tr");
+
+                let td1 = document.createElement("td"); 
+                let td2 = document.createElement("td"); 
+                let td3 = document.createElement("td"); 
+
+                td1.innerText = "xxxxxx";
+                td2.innerText = "xxxxxx";
+                td3.innerText = "xxxxxx";
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+
+                table.appendChild(tr);
+
+            }
+
             $(document).ready(function(){
 
                 alert("hola desde jquery");
